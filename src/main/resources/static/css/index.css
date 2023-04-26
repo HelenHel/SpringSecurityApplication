@@ -1,4 +1,43 @@
 a{
-    text-decoration: none;
+    letter-spacing: 1px;
+    color: navy;
+}
+body{
+    background-color: bisque;
+    padding: 20px;
+    font-family: Impact;
+    color: navy;
+    text-align: center;
+}
+input{
+    font-size: 15px;
+    font-family: Impact;
     color: brown;
+}
+form{
+    font-size: 15px;
+}
+h1, h2{
+    letter-spacing: 3px;
+}
+h3{
+    letter-spacing: 2px;
+}
+img {
+    border: 2px solid brown;
+    box-shadow: 2px 2px 5px black;
+    width: 300px;
+    height: 405px;
+}
+button{
+    font-family: Impact;
+    color: navy;
+}
+p, textarea{
+    font-size: 15px;
+    font-family: Impact;
+}
+select{
+    font-size: 15px;
+    font-family: Impact;
 }

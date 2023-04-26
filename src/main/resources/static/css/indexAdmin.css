@@ -1,0 +1,22 @@
+body{
+    background-color: bisque;
+    padding: 20px;
+    font-family: Impact;
+    color: navy;
+    text-align: center;
+}
+h1{
+    letter-spacing: 3px;
+}
+div{
+    float: left;
+    margin: 10px;
+    padding: 10px;
+    width: 500px;
+    height: 700px;
+    border: 2px solid brown;
+}
+input, button{
+    margin: 10px;
+    font-family: Impact;
+}

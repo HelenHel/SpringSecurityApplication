@@ -1,0 +1,20 @@
+body{
+    background-color: bisque;
+    padding: 20px;
+    font-family: Impact;
+    color: navy;
+    font-size: 15px;
+}
+h2{
+    letter-spacing: 3px;
+}
+img{
+    border: 2px solid brown;
+    box-shadow: 2px 2px 5px black;
+    width: 300px;
+    height: 405px;
+}
+div{
+    float: left;
+    margin: 10px;
+}

@@ -1,14 +1,10 @@
 package com.example.springsecurityapplication.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -27,6 +23,13 @@ public class Person {
     private String password;
     @Column(name = "role")
     private String role;
+    @ManyToMany
+    @JoinTable(name = "product_cart", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private List<Product> productList;
+
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
+    private List<Order> orderList;
+
     public String getRole() {return role;}
     public void setRole(String role) {this.role = role;}
     public int getId() {return id;}

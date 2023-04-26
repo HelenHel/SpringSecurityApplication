@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление товара</title>
+    <link th:href="@{/css/product.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+  <h1>Добавление товара</h1>
+  <br>
+  <form th:method="POST" th:action="@{/admin/product/add}" th:object="${product}" enctype="multipart/form-data">
+      <label for="title">НАИМЕНОВАНИЕ товара: </label>
+      <textarea type="text" th:field="*{title}" placeholder="Наименование" id="title" style="width: 400px"></textarea>
+      <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+      <br><br>
+      <label for="description">ОПИСАНИЕ товара: </label>
+      <textarea type="text" th:field="*{description}" placeholder="Описание" id="description"  style="width: 400px; height: 300px"></textarea>
+      <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+      <br><br>
+      <label for="price">ЦЕНА товара: </label>
+      <input type="number" th:field="*{price}" placeholder="Цена" id="price" min="1" step="0.0" style="width: 200px">
+      <div style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+      <br><br>
+      <label for="warehouse">СКЛАД товара: </label>
+      <input type="text" th:field="*{warehouse}" placeholder="Склад" id="warehouse" style="width: 200px">
+      <div style="color: red" th:if="${#fields.hasErrors('warehouse')}" th:errors="*{warehouse}"></div>
+      <br><br>
+      <label for="category">КАТЕГОРИЯ товара: </label>
+      <select name="category" th:field="*{category}" id="category">
+          <div th:each="element : ${category}">
+            <option th:text="${element.getName()}" th:value="${element.getId()}" style="width: 200px">
+          </div>
+      </select>
+      <div style="color: red" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
+      <br><br>
+      <label for="seller">ПРОДАВЕЦ товара: </label>
+      <textarea th:field="*{seller}" placeholder="Продавец" id="seller" style="width: 400px"></textarea>
+      <br><br>
+      <pre style="color: red">
+          Вы можете добавить от 1 до 5 фоторгафий.
+          Первое фото будет являтся главным фото.
+          Размер одного фото не боле 1Мб.
+          Данное поле не может быть пусто.
+      </pre>
+      <input type="file" name="file_one"><br><br>
+      <input type="file" name="file_two"><br><br>
+      <input type="file" name="file_three"><br><br>
+      <input type="file" name="file_four"><br><br>
+      <input type="file" name="file_five"><br><br><br>
+      <input type="submit" value="ДОБАВИТЬ товар" style="font-size: 18px; background-color: #0d0d59; color: bisque; border-radius: 5px; letter-spacing: 3px; border: 1px #0d0d59; padding: 10px; box-shadow: 2px 2px 5px black; font-family: Impact">
+  </form>
+
+</body>
+</html>

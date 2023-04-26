@@ -6,7 +6,7 @@
     <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
-  <h3>ВХОД в личный кабинет</h3>
+  <h2>ВХОД в личный кабинет</h2>
   <div th:if="${param.error}" style="color: red">
     Неправильный логин или пароль
   </div><br>
@@ -16,8 +16,12 @@
     <input type="text" placeholder="логин" name="username" id="username"><br><br>
     <label for="password">Введите пароль: </label>
     <input type="password" placeholder="пароль" name="password" id="password"><br><br>
-    <input type="submit" value="ВОЙТИ">
-  </form><hr>
-  <a href="/registration">ЗАРЕГИСТРИРОВАТЬСЯ</a>
+    <input type="submit" value="ВОЙТИ" style="font-size: 20px; background-color: #0d0d59; color: bisque; border-radius: 5px; letter-spacing: 3px; border: 1px #0d0d59; box-shadow: 2px 2px 5px black; padding: 5px">
+  </form>
+  <br><hr><br>
+  <a href="/registration" style="font-size: 20px">ЗАРЕГИСТРИРОВАТЬСЯ</a>
+  <br><br><hr>
+  <a href="/product" style="font-size: 20px">Главная страница МАГАЗИНА</a>
+  <br><br><hr>
 </body>
 </html>

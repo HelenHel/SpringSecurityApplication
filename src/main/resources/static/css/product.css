@@ -1,0 +1,14 @@
+body{
+    background-color: bisque;
+    padding: 20px;
+    font-family: Impact;
+    color: navy;
+    text-align: center;
+}
+h1{
+    letter-spacing: 3px;
+}
+input, textarea, select, pre{
+    font-size: 18px;
+    font-family: "Times New Roman";
+}

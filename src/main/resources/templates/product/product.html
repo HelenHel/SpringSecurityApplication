@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список товаров</title>
+    <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1 style="text-align:center">Главная страница МАГАЗИНА</h1>
+
+<a href="/authentication" style="font-size:15px; float:right">ВХОД в личный кабинет</a>
+<br><br>
+<a href="/registration" style="font-size:17px; float:right">ЗАРЕГИСТРИРОВАТЬСЯ</a>
+<br><br>
+<form th:method="POST" th:action="@{/product/search}">
+    <fieldset>
+        <legend><h3>Сортировка / Поиск / Фильтрация</h3></legend><br>
+        <label for="search">Поиск по НАИМЕНОВАНИЮ</label>
+        <input type="text" id="search" name="search" th:value="*{value_search}">
+        <p>ЦЕНА (руб)</p>
+        <label for="ot">От</label>
+        <input type="text" id="ot" name="ot" th:value="*{value_price_ot}">
+        <label for="do">До</label>
+        <input type="text" id="do" name="do" th:value="*{value_price_do}">
+
+        <div>
+            <input type="radio" id="ascending_price" name="price" value="sorted_by_ascending_price">
+            <label for="ascending_price">Сортировать по ВОЗРАСТАНИЮ цены</label><br>
+            <input type="radio" id="descending_price" name="price" value="sorted_by_descending_price">
+            <label for="descending_price">Сортировать по УБЫВАНИЮ цены</label><br>
+            <p>КАТАЛОГ товаров</p>
+            <input type="radio" name="contract" id="furniture" value="furniture">
+            <label for="furniture">Мебель</label><br>
+            <input type="radio" name="contract" id="appliances" value="appliances">
+            <label for="appliances">Бытовая техника</label><br>
+            <input type="radio" name="contract" id="clothes" value="clothes">
+            <label for="clothes">Одежда</label>
+            <br><br>
+            <input type="submit" value="ПОИСК" style="background-color: brown; color: bisque; border-radius: 3px; letter-spacing: 2px; border: 1px brown; margin: 5px; box-shadow: 2px 2px 5px black; padding: 5px; font-size: 20px">
+        </div>
+    </fieldset>
+</form>
+<h3 style="color: brown; text-align: center">РЕЗУЛЬТАТ поиска/сортировки/фильтрации</h3>
+<br>
+<div th:each="product : ${search_product}" style="float: left; margin: 10px; width: 300px; height: 550px; text-align: center">
+    <img th:src="'/img/'+ ${product.imageList[0].getFileName()}" width="300px"><br>
+    <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a><br>
+    <p th:text="'ЦЕНА: '+ ${product.getPrice()}"></p>
+    <form method="get" th:action="@{/cart/add/{id}(id=${product.getId()})}">
+        <input type="submit" value="ДОБАВИТЬ в КОРЗИНУ" style="font-size: 20px; background-color: #0d0d59; color: bisque; border-radius: 5px; letter-spacing: 3px; border: 1px #0d0d59; box-shadow: 2px 2px 5px black; padding: 10px">
+    </form><br>
+</div>
+<div style="clear: left">
+    <hr>
+    <h2 style="text-align: center">Каталог товаров</h2>
+    <hr>
+    <div th:each="product : ${products}" style="float: left; margin: 10px; width: 300px; height: 550px; text-align: center">
+        <img th:src="'/img/'+ ${product.imageList[0].getFileName()}" width="300px"><br>
+        <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a><br>
+        <p th:text="'ЦЕНА: '+ ${product.getPrice()}"></p>
+        <form method="get" th:action="@{/cart/add/{id}(id=${product.getId()})}">
+            <input type="submit" value="ДОБАВИТЬ в КОРЗИНУ" style="font-size: 20px; background-color: #02024b; color: bisque; border-radius: 5px; letter-spacing: 3px; border: 1px #02024b; box-shadow: 2px 2px 5px black; padding: 10px">
+        </form><br>
+    </div>
+</div>
+</body>
+</html>

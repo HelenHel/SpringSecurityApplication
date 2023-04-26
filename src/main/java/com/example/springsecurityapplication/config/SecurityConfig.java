@@ -22,13 +22,13 @@ public class SecurityConfig{
         http
                 .authorizeHttpRequests()
                 .requestMatchers("/admin").hasRole("ADMIN")
-                .requestMatchers("/authentication", "/registration", "/error", "/resources/**", "/static/**", "/css/**", "/js/**", "/img/**").permitAll()
+                .requestMatchers("/authentication", "/registration", "/error", "/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/product", "/product/info/{id}", "/product/search").permitAll()
                 .anyRequest().hasAnyRole("USER", "ADMIN")
 //                .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/authentication")
                 .loginProcessingUrl("/process_login")
-                .defaultSuccessUrl("/index", true)
+                .defaultSuccessUrl("/person_account", true)
                 .failureUrl("/authentication?error")
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/authentication");

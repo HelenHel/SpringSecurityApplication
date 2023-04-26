@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <link th:href="@{/css/cart.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h2 style="text-align: center">КОРЗИНА товаров</h2>
+<hr>
+<div th:each="product : ${cart_product}" style="float: left; margin: 10px; width: 200px; height: 430px; text-align: center">
+    <img th:src="'/img/'+ ${product.imageList[0].getFileName()}"><br>
+    <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a><br>
+    <p th:text="'ЦЕНА: '+ ${product.getPrice()}"></p>
+    <form method="get" th:action="@{/cart/delete/{id}(id=${product.getId()})}">
+        <input type="submit" value="УДАЛИТЬ" style="background-color: brown; color: bisque; border-radius: 3px; letter-spacing: 2px; border: 1px brown; margin: 5px; box-shadow: 2px 2px 5px black; padding: 5px">
+    </form><br>
+</div>
+
+<div style="clear: left; text-align: center">
+    <hr>
+    <h3 th:text="'ИТОГО: '+ ${price}"></h3>
+    <form method="get" th:action="@{/order/create}">
+        <input type="submit" value="ОФОРМИТЬ" style="font-size: 20px; background-color: #0d0d59; color: bisque; border-radius: 5px; letter-spacing: 3px; border: 1px #0d0d59; box-shadow: 2px 2px 5px black; padding: 10px">
+    </form>
+</div>
+</body>
+</html>
